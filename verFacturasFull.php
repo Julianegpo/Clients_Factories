@@ -1,3 +1,7 @@
+<?php
+require_once './database.php';
+$db = new DataBase();
+?>
 <html>
     <head>
         <title>Clientes y fábricas</title>
@@ -63,15 +67,15 @@
                             </ul>
                         </li>
                     </ul>
-                    
-                        <form class='navbar-form' role='search'>
-                            <div class='form-group'>
-                                <input type='text' class='form-control' placeholder='Buscar'>
-                            </div>
-                            <a href="busqueda.php">
-                                <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
-                            </a>
-                        </form>
+
+                    <form class='navbar-form' role='search'>
+                        <div class='form-group'>
+                            <input type='text' class='form-control' placeholder='Buscar'>
+                        </div>
+                        <a href="busqueda.php">
+                            <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
+                        </a>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -105,38 +109,42 @@
                     </tr>
 
                     <tr>
-                        <td>1</td>
-                        <td>5</td>
-                        <td>-</td>
-                        <td>3,496.35</td>
-                        <td class='alert alert-success'>
-                            <span class='glyphicon glyphicon-ok'/>
-                        </td>
+                        <?php
+                        $query = "SELECT * FROM Factura";
 
-                        <td>
-                            <a href='modificarCliente.php' class='btn alert-warning'>
+                        $facturas = $db->executer($query);
+                        $facturas = $db->getResultados();
+
+                        foreach ($facturas as $factura) {
+                            echo "<td>$factura[0]</td>";
+                            echo "<td>$factura[1]</td>";
+                            echo "<td>$factura[2]</td>";
+                            echo "<td>$factura[3]</td>";
+
+                            if ($factura[4] == "0") {
+                                echo "<td >
+                                        <span class='glyphicon glyphicon-remove'/>
+                                    </td>";
+                            } else {
+                                echo "<td>
+                                        <span class='glyphicon glyphicon-ok'/>
+                                    </td>";
+                            }
+                            echo "<td>
+                            <a href='modificarFactura.php?id=$factura[0]' class='btn alert-warning'>
                                 <text>Modificar</text>
                                 <span class='glyphicon glyphicon-pencil'/>
                             </a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>-</td>
-                        <td>7</td>
-                        <td>235.95</td>
-                        <td class='alert alert-danger'>
-                            <span class='glyphicon glyphicon-remove'/>
-                        </td>
-                        
-                        
                         <td>
-                            <a href='modificarFactura.php' class='btn alert-warning'>
-                                <text>Modificar</text>
-                                <span class='glyphicon glyphicon-pencil'/>
+                            <a href='' class='btn alert-danger'>
+                                <text>Eliminar</text>
+                                <span class='glyphicon glyphicon-remove'/>
                             </a>
-                        </td>
-                    </tr>
+                            </td>
+                            </tr>";
+                        }
+                        ?>
                 </table>
             </div>
         </div>

@@ -1,3 +1,7 @@
+<?php
+require_once './database.php';
+$db = new DataBase();
+?>
 <html>
     <head>
         <title>Clientes y fábricas</title>
@@ -63,39 +67,63 @@
                             </ul>
                         </li>
                     </ul>
-                    
-                        <form class='navbar-form' role='search'>
-                            <div class='form-group'>
-                                <input type='text' class='form-control' placeholder='Buscar'>
-                            </div>
-                            <a href="busqueda.php">
-                                <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
-                            </a>
-                        </form>
+
+                    <form class='navbar-form' role='search'>
+                        <div class='form-group'>
+                            <input type='text' class='form-control' placeholder='Buscar'>
+                        </div>
+                        <a href="busqueda.php">
+                            <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
+                        </a>
+                    </form>
                 </div>
             </div>
         </nav>
+        <?php
+        $query = "SELECT * FROM Client";
+        $clientes = $db->executer($query);
+        $clientes = $db->getResultados();
+        
+        $query2="SELECT * FROM Factory";
+        $fabricas = $db->executer($query2);
+        $fabricas = $db->getResultados();
+        ?>
         <div class='container'>
-            <form>
+            <form method='post' action='registroFacturaOk.php'>
+
                 <label>Cliente</label>
-                <input type='text' class='form-control' placeholder='Nombre cliente'>
+                <select class='form-control' name='cliente'>
+                    <?php
+                    echo "<option>-</option>";
+                    foreach($clientes as $cliente) {
+                        
+                        echo "<option value='$cliente[0]'>$cliente[1]</option>";
+                    }
+                    ?>
+                </select>
                 <label>Fábrica</label>
-                <input type='text' class='form-control' placeholder='Nombre fábrica'>  
+                <select class='form-control' name='fabrica'>
+                    <?php
+                    echo "<option>-</option>";
+                    foreach($fabricas as $fabrica){
+                        echo "<option value='$fabrica[0]'>$fabrica[1]</option>";
+                    }
+                    ?>
+                </select>
                 <label>Importe beneficio (€)</label>
-                <input type='text' class='form-control' placeholder='Importe'>  
+                <input type='text' class='form-control' name='importe' placeholder='Importe'>  
                 <label>Pagada</label>
                 <div class='radio'>
                     <label for='si'>
-                        <input type='radio' name='pagada' id='si'>Sí
+                        <input type='radio' name='pagada' value='si'>Sí
                     </label>
                     <label for='no'>
-                        <input type='radio' name='pagada' id='no'>No
-                    </label>
-                    
+                        <input type='radio' name='pagada' value='no'>No
+                    </label>  
                 </div>
+                <br>
+                <input type='submit' class='btn btn-primary' value='Crear factura'>
             </form>
-            <br>
-            <button type='submit' class='btn btn-primary'>Crear factura</button>
         </div>
     </body>
 </html>

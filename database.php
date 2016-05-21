@@ -34,4 +34,3 @@ class DataBase{
 		return $filas;
 	}
 }
-?>

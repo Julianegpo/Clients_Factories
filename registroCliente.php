@@ -7,10 +7,10 @@
         <script src='js/bootstrap.min.js' type='text/javascript'></script>
         <script src='js/npm.js' type='text/javascript'></script>
         <link href='css/bootstrap.css' rel='stylesheet' type='text/css'/>
-    </head>";
+    </head>
 
- <body>
-         <nav class='navbar navbar-default'>
+    <body>
+        <nav class='navbar navbar-default'>
             <div class='container-fluid'>
                 <div class='navbar-header'>
                     <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
@@ -64,35 +64,35 @@
                             </ul>
                         </li>
                     </ul>
-                    
-                        <form class='navbar-form' role='search'>
-                            <div class='form-group'>
-                                <input type='text' class='form-control' placeholder='Buscar'>
-                            </div>
-                            <a href="busqueda.php">
-                                <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
-                            </a>
-                        </form>
+
+                    <form class='navbar-form' role='search'>
+                        <div class='form-group'>
+                            <input type='text' class='form-control' placeholder='Buscar'>
+                        </div>
+                        <a href="busqueda.php">
+                            <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
+                        </a>
+                    </form>
                 </div>
             </div>
         </nav>
         <div class='container'>
-            <form>
+            <form method="post" action="registroClienteOk.php">
                 <label>Nombre</label>
-                <input type='text' class='form-control' placeholder='Nombre'>
+                <input type='text' class='form-control' name="nombre" placeholder='Nombre'>
                 <label>Apellido</label>
-                <input type='text' class='form-control' placeholder='Apellido'>  
+                <input type='text' class='form-control' name="apellido" placeholder='Apellido'>  
                 <label>DNI</label>
-                <input type='text' class='form-control' placeholder='DNI'>  
+                <input type='text' class='form-control' name="dni" placeholder='DNI'>  
                 <label>Población</label>
-                <input type='text' class='form-control' placeholder='Población'>
+                <input type='text' class='form-control' name="poblacion" placeholder='Población'>
                 <label>Código postal</label>
-                <input type='text' class='form-control' placeholder='Código postal'>  
+                <input type='text' class='form-control' name="cp" placeholder='Código postal'>  
                 <label>Teléfono</label>
-                <input type='text' class='form-control' placeholder='Teléfono'>  
+                <input type='text' class='form-control' name="telf" placeholder='Teléfono'>  
+                <br>
+                <input type='submit' class='btn btn-primary' value="Registro">
             </form>
-            <br>
-            <button type='submit' class='btn btn-primary'>Registro</button>
         </div>
     </body>
 </html>

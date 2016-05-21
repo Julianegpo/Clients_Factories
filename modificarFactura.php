@@ -1,3 +1,8 @@
+<?php
+require_once './database.php';
+$db = new DataBase();
+$id_factura = $_GET['id'];
+?>
 <html>
     <head>
         <title>Clientes y fábricas</title>
@@ -75,26 +80,48 @@
         </div>
     </nav>
     <div class='container'>
-         <form>
-                <label>Cliente</label>
-                <input type='text' class='form-control' placeholder='Nombre cliente' disabled>
-                <label>Fábrica</label>
-                <input type='text' class='form-control' placeholder='Nombre fábrica'disabled>  
-                <label>Importe beneficio (€)</label>
-                <input type='text' class='form-control' placeholder='Importe' disabled>  
-                <label>Pagada</label>
-                <div class='radio'>
-                    <label for='si'>
-                        <input type='radio' name='pagada' id='si'>Sí
-                    </label>
-                    <label for='no'>
-                        <input type='radio' name='pagada' id='no'>No
-                    </label>
-                    
-                </div>
-            </form>
+        
+            <?php
+            $query = "SELECT * FROM Factura f, Client c, Factory fab WHERE f.id_factura=$id_factura";
+            $factura = $db->executer($query);
+            $factura = $db->getResultados();
+            foreach ($factura as $fact) {
+                extract($fact);
+                    echo "<form method='post' action='modificarFacturaOk.php?id_factura=".$id_factura."'>";
+                if ($cliente_id != null) {
+                    echo "<label>Cliente</label>
+            <input type='text' class='form-control' placeholder='$nombre_c' disabled>
+            <label>Importe beneficio (€)</label>
+            <input type='text' class='form-control' placeholder='$importe' disabled>  
+            <label>Pagada</label>
+            <div class='radio'>
+                <label for='si'>
+                    <input type='radio' name='pagada' id='si'>Sí
+                </label>
+                <label for='no'>
+                    <input type='radio' name='pagada' id='no'>No
+                </label>
+            </div>";
+                } else {
+                    echo "<label>Fábrica</label>
+            <input type='text' class='form-control' placeholder='$nombre_f' disabled> 
+            <label>Importe beneficio (€)</label>
+            <input type='text' class='form-control' placeholder='$importe' disabled>  
+            <label>Pagada</label>
+            <div class='radio'>
+                <label for='si'>
+                    <input type='radio' name='pagada' id='si' value='si'>Sí
+                </label>
+                <label for='no'>
+                    <input type='radio' name='pagada' id='no' value='no'>No
+                </label>
+            </div>";
+                }
+            }
+            ?>
             <br>
-            <button type='submit' class='btn btn-primary'>Modificar</button>
+            <input type='submit' class='btn btn-primary' value='Modificar'>
+        </form>
     </div>
 </body>
 </html>

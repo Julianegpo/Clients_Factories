@@ -80,7 +80,7 @@
                 ¡Bienvenido!
             </label>
             <div class='text-info'>
-                Esta aplicación te permite gestionar las facturas de tus clientes de la manera más sensilla posible.
+                Esta aplicación te permite gestionar las facturas de tus clientes de la manera más sencilla posible.
             </div>
             <img src='img/apreton.jpg'>
         </div>

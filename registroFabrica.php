@@ -76,31 +76,31 @@
             </div>
         </nav>
         <div class='container'>
-            <form>
+            <form method='post' action='registroFabricaOk.php'>
 
                 <label>Nombre</label>
-                <input type='text' class='form-control' placeholder='Nombre'>
+                <input type='text' class='form-control' name='nombre' placeholder='Nombre'>
 
                 <label>Propietario</label>
-                <input type='text' class='form-control' placeholder='Nombre del propietario'>  
+                <input type='text' class='form-control' name='owner' placeholder='Nombre del propietario'>  
 
                 <label>DNI</label>
-                <input type='text' class='form-control' placeholder='DNI'>  
+                <input type='text' class='form-control' name='dni' placeholder='DNI'>  
 
                 <label>Población</label>
-                <input type='text' class='form-control' placeholder='Población'>
+                <input type='text' class='form-control' name='poblacion' placeholder='Población'>
 
                 <label>Código postal</label>
-                <input type='text' class='form-control' placeholder='Código postal'> 
+                <input type='text' class='form-control' name='cp' placeholder='Código postal'> 
 
                 <label>Teléfono</label>
-                <input type='text' class='form-control' placeholder='Teléfono'>
+                <input type='text' class='form-control' name='telf' placeholder='Teléfono'>
 
                 <label>Comisión (%)</label>
-                <input type='text' class='form-control' placeholder='Comisión (%)'>
+                <input type='text' class='form-control' name='comision' placeholder='Comisión (%)'>
+                <br>
+                <input type='submit' class='btn btn-primary' value='Registrar'>
             </form>
-            <br>
-            <button type='submit' class='btn btn-primary'>Registro</button>
         </div>
     </body>
 </html>

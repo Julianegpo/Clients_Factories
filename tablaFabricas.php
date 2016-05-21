@@ -1,3 +1,7 @@
+<?php
+require_once './database.php';
+$db = new DataBase();
+?>
 <html>
     <head>
         <title>Clientes y fábricas</title>
@@ -9,7 +13,7 @@
         <link href='css/bootstrap.css' rel='stylesheet' type='text/css'/>
     </head>
     <body>
-         <nav class='navbar navbar-default'>
+        <nav class='navbar navbar-default'>
             <div class='container-fluid'>
                 <div class='navbar-header'>
                     <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
@@ -63,15 +67,15 @@
                             </ul>
                         </li>
                     </ul>
-                    
-                        <form class='navbar-form' role='search'>
-                            <div class='form-group'>
-                                <input type='text' class='form-control' placeholder='Buscar'>
-                            </div>
-                            <a href="busqueda.php">
-                                <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
-                            </a>
-                        </form>
+
+                    <form class='navbar-form' role='search'>
+                        <div class='form-group'>
+                            <input type='text' class='form-control' placeholder='Buscar'>
+                        </div>
+                        <a href="busqueda.php">
+                            <span class='glyphicon glyphicon-search' aria-hidden='true'/>                   
+                        </a>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -82,7 +86,7 @@
 
                 <!-- Table -->
                 <table class='table'>
-                    
+
                     <tr>
                         <td>
                             <label>Código</label>
@@ -112,18 +116,26 @@
                             <label>Gestión</label>
                         </td>
                     </tr>
-                    
+
                     <tr>
-                        <td>1</td>
-                        <td>Pepitos S.L</td>
-                        <td>Pepe de los Palotes</td>
-                        <td>3523239X</td>
-                        <td>Barcelona</td>
-                        <td>08123</td>
-                        <td>+34 943940285</td>
-                        <td>50</td>
-                        <td>
-                            <a href='modificarFabrica.php' class='btn alert-warning'>
+                        <?php
+                        $query = "SELECT * FROM Factory";
+
+                        $fabricas = $db->executer($query);
+                        $fabricas = $db->getResultados();
+                            echo "<tr>";
+                            foreach ($fabricas as $fabrica) {
+                                echo "<td>$fabrica[0]</td>";
+                                echo "<td>$fabrica[1]</td>";
+                                echo "<td>$fabrica[2]</td>";
+                                echo "<td>$fabrica[3]</td>";
+                                echo "<td>$fabrica[4]</td>";
+                                echo "<td>$fabrica[5]</td>";
+                                echo "<td>$fabrica[6]</td>";
+                                echo "<td>$fabrica[7]</td>";
+
+                                echo "<td>
+                            <a href='modificarCliente.php' class='btn alert-warning'>
                                 <text>Modificar</text>
                                 <span class='glyphicon glyphicon-pencil'/>
                             </a>
@@ -133,8 +145,11 @@
                                 <text>Eliminar</text>
                                 <span class='glyphicon glyphicon-remove'/>
                             </a>
-                        </td>
-                    </tr>
+                            </td>
+                            </tr>";
+                            }
+                        
+                        ?>
                 </table>
             </div>
         </div>

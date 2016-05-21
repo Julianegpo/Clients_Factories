@@ -80,6 +80,8 @@
             <input type='text' class='form-control' placeholder="Nombre nuevo de la fábrica">
             <label>Propietario</label>
             <input type='text' class='form-control' placeholder="Propietario nuevo de la fábrica">
+            <label>DNI</label>
+            <input type='text' class='form-control' placeholder='DNI' disabled>  
             <label>Población</label>
             <input type='text' class='form-control' placeholder='Población'>
             <label>Código postal</label>

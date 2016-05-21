@@ -1,3 +1,7 @@
+<?php
+require_once './database.php';
+$db = new DataBase();
+?>
 <html>
     <head>
         <title>Clientes y fábricas</title>
@@ -98,31 +102,33 @@
                             <label>Gestión</label>
                         </td>
                     </tr>
+                    <tr>
+                       <?php
+                        $query = "SELECT * FROM Factura WHERE pagada=0";
 
-                    <tr>
-                        <td>3</td>
-                        <td>43</td>
-                        <td>-</td>
-                        <td>3,496.35</td>
-                        <td>
-                            <a href='modificarFactura.php' class='btn alert-warning'>
+                        $facturas = $db->executer($query);
+                        $facturas = $db->getResultados();
+
+                        foreach ($facturas as $factura) {
+                            echo "<td>$factura[0]</td>";
+                            echo "<td>$factura[1]</td>";
+                            echo "<td>$factura[2]</td>";
+                            echo "<td>$factura[3]</td>";
+                            echo "<td>
+                            <a href='modificarFactura.php?id=$factura[0]' class='btn alert-warning'>
                                 <text>Modificar</text>
                                 <span class='glyphicon glyphicon-pencil'/>
                             </a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>-</td>
-                        <td>1</td>
-                        <td>12,583.95</td>
                         <td>
-                            <a href='modificarFactura.php' class='btn alert-warning'>
-                                <text>Modificar</text>
-                                <span class='glyphicon glyphicon-pencil'/>
+                            <a href='' class='btn alert-danger'>
+                                <text>Eliminar</text>
+                                <span class='glyphicon glyphicon-remove'/>
                             </a>
-                        </td>
-                    </tr>
+                            </td>
+                            </tr>";
+                        }
+                        ?>
                 </table>
             </div>
         </div>

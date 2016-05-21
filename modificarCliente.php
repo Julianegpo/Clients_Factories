@@ -76,6 +76,12 @@
     </nav>
     <div class="container">
         <form> 
+            <label>Nombre</label>
+            <input type='text' class='form-control' placeholder='Nombre' disabled>
+            <label>Apellido</label>
+            <input type='text' class='form-control' placeholder='Apellido' disabled>  
+            <label>DNI</label>
+            <input type='text' class='form-control' placeholder='DNI' disabled>  
             <label>Población</label>
             <input type='text' class='form-control' placeholder='Población'>
             <label>Código postal</label>
