@@ -12,6 +12,6 @@ $com=$_POST['comision'];
 $query="UPDATE Factory SET nombre_f='$nombre', propietario='$owner', poblacion='$poblacion', "
         . "codigo_postal=$cp, telefono=$telf, comision=$com WHERE id_f=$id_fabr";
 $db->executer($query);
-
+$db->disconnect();
 header("refresh: 0; url= tablaFabricas.php");
 ?>

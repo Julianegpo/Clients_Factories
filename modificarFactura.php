@@ -118,6 +118,7 @@ $id_factura = $_GET['id'];
             </div>";
                 }
             }
+            $db->disconnect();
             ?>
             <br>
             <input type='submit' class='btn btn-primary' value='Modificar'>

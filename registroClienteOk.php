@@ -12,6 +12,6 @@ $db=new DataBase();
 $query="INSERT INTO Client(nombre_c, apellidos, dni, poblacion, codigo_postal, telefono) "
         . "VALUES ('$name', '$surname', '$dni', '$pobl', '$cp', '$telf')";
 $db->executer($query);
-
+$db->disconnect();
 header("refresh: 0; url= index.php");
 ?>

@@ -88,18 +88,19 @@ $id_c = $_GET['id'];
         foreach ($client as $cl) {
             echo"    
         <label>Nombre</label>
-        <input type = 'text' class = 'form-control' placeholder = '$cl[1]' disabled>
+        <input type = 'text' class = 'form-control' name='nombre' value = '$cl[1]' disabled>
         <label>Apellido</label>
-        <input type = 'text' class = 'form-control' placeholder = '$cl[2]' disabled>
+        <input type = 'text' class = 'form-control' name='surname' value = '$cl[2]' disabled>
         <label>DNI</label>
-        <input type = 'text' class = 'form-control' placeholder = '$cl[3]' disabled>
+        <input type = 'text' class = 'form-control' name='dni' value = '$cl[3]' disabled>
         <label>Población</label>
-        <input type = 'text' class = 'form-control' name='pobl' placeholder = '$cl[4]'>
+        <input type = 'text' class = 'form-control' name='pobl' value = '$cl[4]'>
         <label>Código postal</label>
-        <input type = 'text' class = 'form-control' name='cp' placeholder = '$cl[5]'>
+        <input type = 'text' class = 'form-control' name='cp' value = '$cl[5]'>
         <label>Teléfono</label>
-        <input type = 'text' class = 'form-control' name='telf' placeholder = '$cl[6]'>";
+        <input type = 'text' class = 'form-control' name='telf' value = '$cl[6]'>";
         }
+        $db->disconnect();
         ?>        
         <br>
         <input type='submit' class='btn btn-primary' value='Modificar'>

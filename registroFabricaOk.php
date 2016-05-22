@@ -13,5 +13,6 @@ $db=new DataBase();
 $query="INSERT INTO Factory(nombre_f, propietario, dni, poblacion, codigo_postal, telefono, comision) "
         . "VALUES ('$name', '$owner', '$dni', '$pobl', '$cp', '$telf', '$com')";
 $db->executer($query);
+$db->disconnect();
 header("refresh: 0; url= index.php");
 ?>

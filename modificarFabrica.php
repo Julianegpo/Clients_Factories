@@ -102,6 +102,7 @@ $id_fabrica = $_GET['id_fabr'];
             <label>Comisión (%)</label>
             <input type='text' class='form-control' name='comision' value='$fact[7]'>";
         }
+        $db->disconnect();
         ?>
         <br>
         <input type='submit' class='btn btn-primary' value='Modificar'>

@@ -123,32 +123,32 @@ $db = new DataBase();
 
                         $fabricas = $db->executer($query);
                         $fabricas = $db->getResultados();
-                            echo "<tr>";
-                            foreach ($fabricas as $fabrica) {
-                                echo "<td>$fabrica[0]</td>";
-                                echo "<td>$fabrica[1]</td>";
-                                echo "<td>$fabrica[2]</td>";
-                                echo "<td>$fabrica[3]</td>";
-                                echo "<td>$fabrica[4]</td>";
-                                echo "<td>$fabrica[5]</td>";
-                                echo "<td>$fabrica[6]</td>";
-                                echo "<td>$fabrica[7]</td>";
+                        echo "<tr>";
+                        foreach ($fabricas as $fabrica) {
+                            echo "<td>$fabrica[0]</td>";
+                            echo "<td>$fabrica[1]</td>";
+                            echo "<td>$fabrica[2]</td>";
+                            echo "<td>$fabrica[3]</td>";
+                            echo "<td>$fabrica[4]</td>";
+                            echo "<td>$fabrica[5]</td>";
+                            echo "<td>$fabrica[6]</td>";
+                            echo "<td>$fabrica[7]</td>";
 
-                                echo "<td>
+                            echo "<td>
                             <a href='modificarFabrica.php?id_fabr=$fabrica[0]' class='btn alert-warning'>
                                 <text>Modificar</text>
                                 <span class='glyphicon glyphicon-pencil'/>
                             </a>
                         </td>
                         <td>
-                            <a href='' class='btn alert-danger'>
+                            <a href='eliminarFabrica.php?id=$fabrica[0]' class='btn alert-danger'>
                                 <text>Eliminar</text>
                                 <span class='glyphicon glyphicon-remove'/>
                             </a>
                             </td>
                             </tr>";
-                            }
-                        
+                        }
+                        $db->disconnect();
                         ?>
                 </table>
             </div>

@@ -12,5 +12,6 @@ if ($pagada == 'si') {
     $query = "UPDATE Factura SET pagada=false WHERE id_factura=$id";
     $con->executer($query);
 }
+$db->disconnect();
 header("refresh: 0; url= verFacturasFull.php");
 ?>

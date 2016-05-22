@@ -121,13 +121,14 @@ $db = new DataBase();
                             </a>
                         </td>
                         <td>
-                            <a href='' class='btn alert-danger'>
+                            <a href='eliminarFactura.php?id=$factura[0]' class='btn alert-danger'>
                                 <text>Eliminar</text>
                                 <span class='glyphicon glyphicon-remove'/>
                             </a>
                             </td>
                             </tr>";
                         }
+                        $db->disconnect();
                         ?>
                 </table>
             </div>
