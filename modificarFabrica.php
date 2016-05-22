@@ -1,3 +1,8 @@
+<?php
+require_once './database.php';
+$db = new DataBase();
+$id_fabrica = $_GET['id_fabr'];
+?>
 <html>
     <head>
         <title>Clientes y fábricas</title>
@@ -75,24 +80,33 @@
         </div>
     </nav>
     <div class="container">
-        <form> 
+        <?php
+        $query = "SELECT * FROM Factory WHERE id_f=$id_fabrica";
+        $factory = $db->executer($query);
+        $factory = $db->getResultados();
+
+        foreach ($factory as $fact) {
+            echo "<form method='post' action='modificarFabricaOk.php?id_fabr=".$id_fabrica."'> 
             <label>Nombre de la fábrica</label>
-            <input type='text' class='form-control' placeholder="Nombre nuevo de la fábrica">
+            <input type='text' class='form-control' name='nombre' value='$fact[1]'>
             <label>Propietario</label>
-            <input type='text' class='form-control' placeholder="Propietario nuevo de la fábrica">
+            <input type='text' class='form-control' name='owner' value='$fact[2]'>
             <label>DNI</label>
-            <input type='text' class='form-control' placeholder='DNI' disabled>  
+            <input type='text' class='form-control' value='$fact[3]' disabled>  
             <label>Población</label>
-            <input type='text' class='form-control' placeholder='Población'>
+            <input type='text' class='form-control' name='poblacion' value='$fact[4]'>
             <label>Código postal</label>
-            <input type='text' class='form-control' placeholder='Código postal'>  
+            <input type='text' class='form-control' name='cp' value='$fact[5]'>  
             <label>Teléfono</label>
-            <input type='text' class='form-control' placeholder='Teléfono'>
+            <input type='text' class='form-control' name='telf' value='$fact[6]'>
             <label>Comisión (%)</label>
-            <input type='text' class='form-control' placeholder="Nuevo porcentaje de comisión">
-        </form>
+            <input type='text' class='form-control' name='comision' value='$fact[7]'>";
+        }
+        ?>
         <br>
-        <button type='submit' class='btn btn-primary'>Modificar</button>        
+        <input type='submit' class='btn btn-primary' value='Modificar'>
+        </form>
+
     </div>
 </body>
 </html>

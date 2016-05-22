@@ -128,7 +128,7 @@ $db = new DataBase();
                             echo "<td>$cliente[6]</td>";
 
                             echo "<td>
-                            <a href='modificarCliente.php' class='btn alert-warning'>
+                            <a href='modificarCliente.php?id=$cliente[0]' class='btn alert-warning'>
                                 <text>Modificar</text>
                                 <span class='glyphicon glyphicon-pencil'/>
                             </a>

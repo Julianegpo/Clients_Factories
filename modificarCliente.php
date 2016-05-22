@@ -1,3 +1,8 @@
+<?php
+require_once './database.php';
+$db = new DataBase();
+$id_c = $_GET['id'];
+?>
 <html>
     <head>
         <title>Clientes y fábricas</title>
@@ -75,22 +80,31 @@
         </div>
     </nav>
     <div class="container">
-        <form> 
-            <label>Nombre</label>
-            <input type='text' class='form-control' placeholder='Nombre' disabled>
-            <label>Apellido</label>
-            <input type='text' class='form-control' placeholder='Apellido' disabled>  
-            <label>DNI</label>
-            <input type='text' class='form-control' placeholder='DNI' disabled>  
-            <label>Población</label>
-            <input type='text' class='form-control' placeholder='Población'>
-            <label>Código postal</label>
-            <input type='text' class='form-control' placeholder='Código postal'>  
-            <label>Teléfono</label>
-            <input type='text' class='form-control' placeholder='Teléfono'>  
-        </form>
+        <?php
+        $query = "SELECT * FROM Client WHERE id_c=$id_c";
+        $client = $db->executer($query);
+        $client = $db->getResultados();
+        echo "<form method='post' action='modificarClienteOk.php?id=" . $id_c . "'>";
+        foreach ($client as $cl) {
+            echo"    
+        <label>Nombre</label>
+        <input type = 'text' class = 'form-control' placeholder = '$cl[1]' disabled>
+        <label>Apellido</label>
+        <input type = 'text' class = 'form-control' placeholder = '$cl[2]' disabled>
+        <label>DNI</label>
+        <input type = 'text' class = 'form-control' placeholder = '$cl[3]' disabled>
+        <label>Población</label>
+        <input type = 'text' class = 'form-control' name='pobl' placeholder = '$cl[4]'>
+        <label>Código postal</label>
+        <input type = 'text' class = 'form-control' name='cp' placeholder = '$cl[5]'>
+        <label>Teléfono</label>
+        <input type = 'text' class = 'form-control' name='telf' placeholder = '$cl[6]'>";
+        }
+        ?>        
         <br>
-        <button type='submit' class='btn btn-primary'>Modificar</button>        
+        <input type='submit' class='btn btn-primary' value='Modificar'>
+        </form> 
+
     </div>
 </body>
 </html>
